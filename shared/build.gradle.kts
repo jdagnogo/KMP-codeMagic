@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kspCompose)
+    alias(libs.plugins.serialization.plugin)
 }
 
 kotlin {
@@ -50,6 +51,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             api(libs.koin.core)
+            implementation(libs.serialization)
             implementation(libs.koin.compose)
             implementation(libs.koin.composeVM)
             implementation(libs.navigation.compose)
@@ -70,4 +72,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+}
+dependencies {
+    implementation(libs.androidx.navigation.compose)
 }

@@ -6,15 +6,15 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.carrefour.kmpcodemagic.ui.feature.home.HomePage
-import com.carrefour.kmpcodemagic.ui.feature.onboarding.OnBoardingPage
+import com.carrefour.kmpcodemagic.ui.feature.home.mainGraph
+import com.carrefour.kmpcodemagic.ui.feature.onboarding.onBoardingGraph
 import com.carrefour.kmpcodemagic.ui.feature.splashscreen.SplashScreenPage
 
 @Composable
 fun NavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screen.SplashScreen.route,
+        startDestination = SplashScreen,
         enterTransition = {
             slideIntoContainer(
                 AnimatedContentTransitionScope.SlideDirection.Left,
@@ -40,20 +40,12 @@ fun NavGraph(navController: NavHostController) {
             )
         },
     ) {
-        composable(
-            route = Screen.SplashScreen.route,
-        ) {
-            SplashScreenPage(navController)
+        composable<SplashScreen> {
+            SplashScreenPage(onNavigateToOnBoarding = { navController.navigate(OnBoarding) })
         }
-        composable(
-            route = Screen.OnBoarding.route,
-        ) {
-            OnBoardingPage(navController)
-        }
-        composable(
-            route = Screen.Home.route,
-        ) {
-            HomePage(navController)
-        }
+
+        onBoardingGraph(navController, onContinue = { navController.navigate(MainGraph) })
+
+        mainGraph()
     }
 }
