@@ -19,11 +19,15 @@ internal fun NavGraphBuilder.onBoardingGraph(
         }
 
         composable<OnBoardingPage2> {
-            OnBoardingPage2Screen(onContinue = { navHostController.navigate(OnBoardingPage3) })
+            OnBoardingPage2Screen(
+                onBack = { navHostController.navigate(OnBoardingPage1) },
+                onContinue = { navHostController.navigate(OnBoardingPage3) })
         }
 
         composable<OnBoardingPage3> {
-            OnBoardingPage3Screen(onContinue = onContinue)
+            OnBoardingPage3Screen(
+                onBack = { navHostController.navigate(OnBoardingPage2) },
+                onContinue = onContinue)
         }
     }
 }

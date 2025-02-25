@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My awesome app</string>
+
+
+   // on_boarding1
+    <string name="on_boarding1_title">KMP android et Ios</string>
+    <string name="on_boarding1_subtitle">App de demo pour montrer les possilités de KMP.</string>
+
+    <string name="on_boarding2_title">Features hybrides</string>
+    <string name="on_boarding2_subtitle">La map sera faite en compose Android et en SwiftUI</string>
+
+    <string name="on_boarding3_title">Donne nous juste ton token</string>
+    <string name="on_boarding3_subtitle">Pour qu on puisse afficher tes build CodeMagic</string>
+
+    <string name="on_boarding_next">Continuer</string>
+    <string name="on_boarding_back">Revenir</string>
+</resources>
