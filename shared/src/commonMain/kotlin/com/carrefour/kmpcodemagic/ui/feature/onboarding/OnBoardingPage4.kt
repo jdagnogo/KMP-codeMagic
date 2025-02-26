@@ -32,15 +32,23 @@ import androidx.compose.ui.text.withLink
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import kmp_codemagic.shared.generated.resources.Res
+import kmp_codemagic.shared.generated.resources.codemagic2
 import kmp_codemagic.shared.generated.resources.codemagic3
 import kmp_codemagic.shared.generated.resources.on_boarding3_subtitle
 import kmp_codemagic.shared.generated.resources.on_boarding3_title
+import kmp_codemagic.shared.generated.resources.on_boarding4_subtitle
+import kmp_codemagic.shared.generated.resources.on_boarding4_title
 import kmp_codemagic.shared.generated.resources.on_boarding_page_3
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun OnBoardingPage3Screen() {
+fun OnBoardingPage4Screen(
+    token: String,
+    onTokenChange: (String) -> Unit,
+) {
+    val uriHandler = LocalUriHandler.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,24 +57,90 @@ fun OnBoardingPage3Screen() {
     ) {
         Image(
             modifier = Modifier.height(400.dp),
-            painter = painterResource(Res.drawable.codemagic3),
+            painter = painterResource(Res.drawable.codemagic2),
             contentDescription = null
         )
 
         Spacer(Modifier.padding(16.dp))
 
         Text(
-            text = stringResource(Res.string.on_boarding3_title),
+            text = stringResource(Res.string.on_boarding4_title),
             style = MaterialTheme.typography.displayLarge,
         )
 
         Spacer(Modifier.padding(8.dp))
 
         Text(
-            text = stringResource(Res.string.on_boarding3_subtitle),
+            text = stringResource(Res.string.on_boarding4_subtitle),
             style = MaterialTheme.typography.displayMedium,
             textAlign = TextAlign.Center,
         )
         Spacer(Modifier.padding(16.dp))
+
+        TokenTextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp),
+            token = token,
+            onTokenChange = onTokenChange,
+        )
+
+        val annotatedString = buildAnnotatedString {
+            append("Grab your api token from your")
+            val link = LinkAnnotation.Url(
+                url = "https://codemagic.io/teams",
+                styles = TextLinkStyles(style = SpanStyle(color = MaterialTheme.colorScheme.primary)),
+                linkInteractionListener = {
+                    val url = (it as LinkAnnotation.Url).url
+                    uriHandler.openUri(url)
+                }
+            )
+            withLink(link = link) {
+                append(" account")
+            }
+            append(" under ")
+            withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onSurfaceVariant)) {
+                append("Personal Account > Integrations > Codemagic API")
+            }
+            append(".")
+        }
+        Text(
+            text = annotatedString,
+            style = MaterialTheme.typography.bodyMedium,
+        )
     }
 }
+
+@Composable
+fun TokenTextField(
+    token: String,
+    modifier: Modifier = Modifier,
+    onTokenChange: (String) -> Unit,
+) {
+    val focusManager = LocalFocusManager.current
+
+    OutlinedTextField(
+        value = token,
+        modifier = modifier,
+        shape = MaterialTheme.shapes.large,
+        onValueChange = onTokenChange,
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Text,
+            imeAction = ImeAction.Done
+        ),
+        textStyle = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.onSurface),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                focusManager.clearFocus()
+            }
+        ),
+        placeholder = {
+            Text(
+                text = "API Token*",
+                style = MaterialTheme.typography.titleMedium,
+            )
+        },
+    )
+}
+
