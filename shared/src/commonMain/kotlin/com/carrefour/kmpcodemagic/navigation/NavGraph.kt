@@ -23,7 +23,7 @@ fun NavGraph(navController: NavHostController) {
         },
         exitTransition = {
             slideOutOfContainer(
-                AnimatedContentTransitionScope.SlideDirection.Left,
+                AnimatedContentTransitionScope.SlideDirection.Right,
                 animationSpec = tween(200)
             )
         },
@@ -35,13 +35,15 @@ fun NavGraph(navController: NavHostController) {
         },
         popExitTransition = {
             slideOutOfContainer(
-                AnimatedContentTransitionScope.SlideDirection.Right,
+                AnimatedContentTransitionScope.SlideDirection.Left,
                 animationSpec = tween(200)
             )
         },
     ) {
         composable<SplashScreen> {
-            SplashScreenPage(onNavigateToOnBoarding = { navController.navigate(OnBoarding) })
+            SplashScreenPage(
+                onNavigateToOnBoarding = { navController.navigate(OnBoarding) },
+                onNavigateToOnHomePage = { navController.navigate(MainGraph) })
         }
 
         onBoardingGraph(navController, onContinue = { navController.navigate(MainGraph) })

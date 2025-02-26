@@ -14,4 +14,8 @@
 
     <string name="on_boarding_next">Continuer</string>
     <string name="on_boarding_back">Revenir</string>
+    <string name="on_boarding_save">Valider</string>
+
+    <string name="on_boarding_labelMore">Entrer votre token</string>
+    <string name="on_boarding_labelLess">Entrer votre token label less ?</string>
 </resources>

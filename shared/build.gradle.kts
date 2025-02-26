@@ -44,17 +44,24 @@ kotlin {
             implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
+            //Compose
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            api(libs.koin.core)
-            implementation(libs.serialization)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.composeVM)
+            //NAV
             implementation(libs.navigation.compose)
+            implementation(libs.serialization)
+            //Koin
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.navigation)
+            implementation(libs.koin.composeVM)
+            //DataStore
+            implementation(libs.datastore)
+            implementation(libs.datastore.preferences)
+            api(libs.koin.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -75,4 +82,5 @@ android {
 }
 dependencies {
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.material3.android)
 }

@@ -3,6 +3,7 @@
 
     <application
         android:allowBackup="false"
+        android:name="com.carrefour.kmpcodemagic.KMPApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity

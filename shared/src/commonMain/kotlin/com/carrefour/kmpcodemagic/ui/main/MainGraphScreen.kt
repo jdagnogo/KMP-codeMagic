@@ -22,6 +22,7 @@ import com.carrefour.kmpcodemagic.navigation.Maps
 import com.carrefour.kmpcodemagic.navigation.Profile
 import com.carrefour.kmpcodemagic.navigation.topLevelRoutes
 import androidx.navigation.NavDestination.Companion.hasRoute
+import com.carrefour.kmpcodemagic.ui.feature.profile.ProfilePage
 
 
 internal fun NavGraphBuilder.mainGraph() {
@@ -66,7 +67,7 @@ internal fun NavGraphBuilder.mainGraph() {
                 composable<Home> { HomePage() }
                 composable<Builds> { Text("Builds") }
                 composable<Maps> { Text("Maps") }
-                composable<Profile> { Text("Profile") }
+                composable<Profile> { ProfilePage() }
             }
         }
     }
