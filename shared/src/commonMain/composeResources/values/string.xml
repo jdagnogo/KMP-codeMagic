@@ -2,19 +2,25 @@
     <string name="app_name">My awesome app</string>
 
 
-   // on_boarding1
-    <string name="on_boarding1_title">KMP android et Ios</string>
-    <string name="on_boarding1_subtitle">App de demo pour montrer les possilités de KMP.</string>
+    // on_boarding1
+    <string name="on_boarding1_title">Welcome to CodeMagic</string>
+    <string name="on_boarding1_subtitle">One tool for all your mobile app builds. Test, build and release with ease.</string>
 
-    <string name="on_boarding2_title">Features hybrides</string>
-    <string name="on_boarding2_subtitle">La map sera faite en compose Android et en SwiftUI</string>
+<!--    <string name="on_boarding1_title">CI/CD for mobile dev teams</string>-->
+<!--    <string name="on_boarding1_subtitle">One tool for all your mobile app builds. Test, build and release with ease.</string>-->
 
-    <string name="on_boarding3_title">Donne nous juste ton token</string>
-    <string name="on_boarding3_subtitle">Pour qu on puisse afficher tes build CodeMagic</string>
+    <string name="on_boarding2_title">Run &amp; Watch Your Builds</string>
+    <string name="on_boarding2_subtitle">Easily launch builds and get instant status updates.</string>
 
-    <string name="on_boarding_next">Continuer</string>
-    <string name="on_boarding_back">Revenir</string>
-    <string name="on_boarding_save">Valider</string>
+    <string name="on_boarding3_title">Profile &amp; Preferences</string>
+    <string name="on_boarding3_subtitle">Customize your settings and manage your account.</string>
+
+    <string name="on_boarding4_title">What's your API token?</string>
+    <string name="on_boarding4_subtitle">This token will be used to authenticate you.</string>
+
+    <string name="on_boarding_next">Next</string>
+    <string name="on_boarding_back">Back</string>
+    <string name="on_boarding_save">Start</string>
 
     <string name="on_boarding_labelMore">Entrer votre token</string>
     <string name="on_boarding_labelLess">Entrer votre token label less ?</string>

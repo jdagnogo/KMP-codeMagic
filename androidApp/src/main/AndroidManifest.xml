@@ -5,6 +5,7 @@
         android:allowBackup="false"
         android:name="com.carrefour.kmpcodemagic.KMPApplication"
         android:supportsRtl="true"
+        android:enableOnBackInvokedCallback="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"

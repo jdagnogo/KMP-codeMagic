@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.carrefour.kmpcodemagic.ui.feature.home.mainGraph
@@ -43,10 +44,21 @@ fun NavGraph(navController: NavHostController) {
         composable<SplashScreen> {
             SplashScreenPage(
                 onNavigateToOnBoarding = { navController.navigate(OnBoarding) },
-                onNavigateToOnHomePage = { navController.navigate(MainGraph) })
+                onNavigateToOnHomePage = { navController.navigate(MainGraph) }
+            )
         }
 
-        onBoardingGraph(navController, onContinue = { navController.navigate(MainGraph) })
+        onBoardingGraph(
+            navigateToMain = {
+                val navOptions = NavOptions.Builder()
+                    .setPopUpTo(route = OnBoarding, inclusive = true)
+                    .build()
+                navController.navigate(
+                    route = MainGraph,
+                    navOptions = navOptions,
+                )
+            }
+        )
 
         mainGraph()
     }
