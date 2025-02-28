@@ -2,7 +2,7 @@ package com.carrefour.kmpcodemagic.ui.feature.onboarding.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.carrefour.kmpcodemagic.domain.SetTokenUseCase
+import com.carrefour.kmpcodemagic.domain.usecase.SetTokenUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow

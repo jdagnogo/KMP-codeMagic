@@ -2,7 +2,7 @@ package com.carrefour.kmpcodemagic.ui.feature.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.carrefour.kmpcodemagic.domain.GetTokenUseCase
+import com.carrefour.kmpcodemagic.domain.usecase.GetTokenUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

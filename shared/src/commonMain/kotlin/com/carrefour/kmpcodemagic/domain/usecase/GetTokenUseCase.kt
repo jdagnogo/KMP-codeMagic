@@ -1,5 +1,6 @@
-package com.carrefour.kmpcodemagic.domain
+package com.carrefour.kmpcodemagic.domain.usecase
 
+import com.carrefour.kmpcodemagic.domain.TokenRepository
 import kotlinx.coroutines.flow.Flow
 
 interface GetTokenUseCase {

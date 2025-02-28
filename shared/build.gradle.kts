@@ -42,6 +42,10 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+            implementation(libs.ktor.client.okhttp)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
         commonMain.dependencies {
             //Compose
@@ -62,6 +66,11 @@ kotlin {
             implementation(libs.datastore)
             implementation(libs.datastore.preferences)
             api(libs.koin.core)
+            //Ktor
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.serialization.kotlinx)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

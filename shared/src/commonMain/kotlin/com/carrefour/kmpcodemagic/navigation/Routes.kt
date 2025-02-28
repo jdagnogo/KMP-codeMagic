@@ -25,6 +25,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable data object Home
 @Serializable data object Builds
+@Serializable data class BuildDetails(val id : String)
 @Serializable data object Maps
 @Serializable data object Profile
 

@@ -1,4 +1,6 @@
-package com.carrefour.kmpcodemagic.domain
+package com.carrefour.kmpcodemagic.domain.usecase
+
+import com.carrefour.kmpcodemagic.domain.TokenRepository
 
 interface SetTokenUseCase {
     suspend operator fun invoke(token: String): Result<Unit>

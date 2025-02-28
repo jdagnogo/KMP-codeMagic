@@ -1,5 +1,6 @@
-package com.carrefour.kmpcodemagic.data
+package com.carrefour.kmpcodemagic.data.repository
 
+import com.carrefour.kmpcodemagic.data.TokenDataStore
 import com.carrefour.kmpcodemagic.domain.TokenRepository
 import kotlinx.coroutines.flow.Flow
 

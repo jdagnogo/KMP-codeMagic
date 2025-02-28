@@ -56,12 +56,10 @@ fun OnBoardingPage4Screen(
         horizontalAlignment = CenterHorizontally
     ) {
         Image(
-            modifier = Modifier.height(400.dp),
+            modifier = Modifier.height(200.dp),
             painter = painterResource(Res.drawable.codemagic2),
             contentDescription = null
         )
-
-        Spacer(Modifier.padding(16.dp))
 
         Text(
             text = stringResource(Res.string.on_boarding4_title),

@@ -8,6 +8,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
@@ -15,13 +16,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.carrefour.kmpcodemagic.navigation.BuildDetails
 import com.carrefour.kmpcodemagic.navigation.Builds
 import com.carrefour.kmpcodemagic.navigation.Home
 import com.carrefour.kmpcodemagic.navigation.MainGraph
 import com.carrefour.kmpcodemagic.navigation.Maps
 import com.carrefour.kmpcodemagic.navigation.Profile
 import com.carrefour.kmpcodemagic.navigation.topLevelRoutes
-import androidx.navigation.NavDestination.Companion.hasRoute
+import com.carrefour.kmpcodemagic.ui.feature.build.BuildListPage
 import com.carrefour.kmpcodemagic.ui.feature.profile.ProfilePage
 
 
@@ -42,7 +44,11 @@ internal fun NavGraphBuilder.mainGraph() {
                                 )
                             },
                             label = { Text(topLevelRoute.name) },
-                            selected = currentDestination?.hierarchy?.any { it.hasRoute(topLevelRoute.route::class) } == true,
+                            selected = currentDestination?.hierarchy?.any {
+                                it.hasRoute(
+                                    topLevelRoute.route::class
+                                )
+                            } == true,
                             onClick = {
                                 navController.navigate(topLevelRoute.route) {
                                     // Pop up to the start destination of the graph to
@@ -65,7 +71,14 @@ internal fun NavGraphBuilder.mainGraph() {
         ) { innerPadding ->
             NavHost(navController, startDestination = Home, Modifier.padding(innerPadding)) {
                 composable<Home> { HomePage() }
-                composable<Builds> { Text("Builds") }
+                composable<BuildDetails> { id -> Text("build Details $id") }
+                composable<Builds> {
+                    BuildListPage(
+                        onNavigateToBuildDetails = { id ->
+                            navController.navigate(BuildDetails(id))
+                        }
+                    )
+                }
                 composable<Maps> { Text("Maps") }
                 composable<Profile> { ProfilePage() }
             }
