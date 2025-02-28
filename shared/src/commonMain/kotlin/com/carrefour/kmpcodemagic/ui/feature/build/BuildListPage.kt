@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.carrefour.kmpcodemagic.domain.models.Build
+import com.carrefour.kmpcodemagic.sharedUi.component.BuildComponent
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -28,20 +29,28 @@ fun BuildListPage(
     if (buildList.isEmpty()) {
         BuildListEmptyScreen()
     } else {
-        BuildListScreen(buildList = buildList, onFetch = viewModel::fetch)
+        BuildListScreen(
+            buildList = buildList,
+            onFetch = viewModel::fetch,
+            onClick = onNavigateToBuildDetails
+        )
     }
 }
 
 @Composable
 private fun BuildListEmptyScreen() {
 //TODO : show empty screen
-    Scaffold() {padding ->
+    Scaffold() { padding ->
         Text("BuildListEmptyScreen")
     }
 }
 
 @Composable
-private fun BuildListScreen(buildList: List<Build>, onFetch: () -> Unit) {
+private fun BuildListScreen(
+    buildList: List<Build>,
+    onFetch: () -> Unit,
+    onClick: (id: String) -> Unit
+) {
     Scaffold(
         bottomBar = {
             Button(onClick = onFetch) {
@@ -54,10 +63,8 @@ private fun BuildListScreen(buildList: List<Build>, onFetch: () -> Unit) {
                 items = buildList,
                 key = { index: Int, item: Build -> item.id }
             ) { index, build ->
-                Text(build.name)
-                Text(build.author)
+                BuildComponent(build = build, onClick = onClick)
             }
-
         }
     }
 }

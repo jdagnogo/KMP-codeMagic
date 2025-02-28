@@ -23,6 +23,7 @@ import com.carrefour.kmpcodemagic.navigation.MainGraph
 import com.carrefour.kmpcodemagic.navigation.Maps
 import com.carrefour.kmpcodemagic.navigation.Profile
 import com.carrefour.kmpcodemagic.navigation.topLevelRoutes
+import com.carrefour.kmpcodemagic.ui.feature.build.BuildDetailsPage
 import com.carrefour.kmpcodemagic.ui.feature.build.BuildListPage
 import com.carrefour.kmpcodemagic.ui.feature.profile.ProfilePage
 
@@ -71,7 +72,7 @@ internal fun NavGraphBuilder.mainGraph() {
         ) { innerPadding ->
             NavHost(navController, startDestination = Home, Modifier.padding(innerPadding)) {
                 composable<Home> { HomePage() }
-                composable<BuildDetails> { id -> Text("build Details $id") }
+                composable<BuildDetails> { BuildDetailsPage(onBack = { navController.popBackStack() }) }
                 composable<Builds> {
                     BuildListPage(
                         onNavigateToBuildDetails = { id ->
