@@ -4,7 +4,9 @@ import shared
 
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController()
+        MainViewControllerKt.MainViewController {
+            return myMapViewFactory()
+        }
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}

@@ -25,6 +25,7 @@ import com.carrefour.kmpcodemagic.navigation.Profile
 import com.carrefour.kmpcodemagic.navigation.topLevelRoutes
 import com.carrefour.kmpcodemagic.ui.feature.build.BuildDetailsPage
 import com.carrefour.kmpcodemagic.ui.feature.build.BuildListPage
+import com.carrefour.kmpcodemagic.ui.feature.map.MapPage
 import com.carrefour.kmpcodemagic.ui.feature.profile.ProfilePage
 
 
@@ -80,7 +81,7 @@ internal fun NavGraphBuilder.mainGraph() {
                         }
                     )
                 }
-                composable<Maps> { Text("Maps") }
+                composable<Maps> { MapPage() }
                 composable<Profile> { ProfilePage() }
             }
         }
